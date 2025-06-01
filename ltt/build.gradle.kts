@@ -37,6 +37,8 @@ android {
 
 dependencies {
     implementation(project(":autojs"))
+    implementation(project(":common"))
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.multidex:multidex:2.0.1")
     implementation("org.apache.commons:commons-lang3:3.12.0")
 }
