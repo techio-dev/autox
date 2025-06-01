@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
  * LTT Application class - Simplified version of main App
  * Khởi tạo AutoJs instance cho LTT module
  */
-class LttApplication : MultiDexApplication() {
+class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -32,12 +32,12 @@ class LttApplication : MultiDexApplication() {
     }
     
     companion object {
-        private lateinit var instance: WeakReference<LttApplication>
+        private lateinit var instance: WeakReference<App>
         
         /**
          * Get application instance
          */
-        val app: LttApplication
+        val app: App
             get() = instance.get()!!
     }
 }
