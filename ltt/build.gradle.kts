@@ -29,6 +29,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    configurations.all {
+        resolutionStrategy.force("androidx.core:core:1.9.0")
+        exclude(group = "org.jetbrains", module = "annotations-java5")
+    }
 }
 
 dependencies {
