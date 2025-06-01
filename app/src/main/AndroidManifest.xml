@@ -611,7 +611,6 @@
         </activity>
         <activity
             android:name="org.autojs.autojs.external.open.RunIntentActivity"
-            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/autojs_logo"
             android:label="@string/text_run_script"
