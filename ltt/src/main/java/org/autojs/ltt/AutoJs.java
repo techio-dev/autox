@@ -59,18 +59,8 @@ public class AutoJs extends com.stardust.autojs.AutoJs {
         if (AccessibilityService.Companion.getInstance() != null) {
             return;
         }
-        
-        String errorMessage = null;
-        if (AccessibilityServiceTool.isAccessibilityServiceEnabled(GlobalAppContext.get())) {
-            errorMessage = "Accessibility service is enabled but not running. Please restart the service.";
-        } else {
-            errorMessage = "Accessibility service is required for automation tools. Opening settings...";
-        }
-        
-        if (errorMessage != null) {
-            AccessibilityServiceTool.goToAccessibilitySetting();
-            throw new ScriptException(errorMessage);
-        }
+        // Cho LTT module, chỉ throw exception để thông báo cần accessibility service
+        throw new ScriptException("Accessibility service is required for automation tools. Please enable it in system settings.");
     }
 
     @Override
@@ -78,20 +68,9 @@ public class AutoJs extends com.stardust.autojs.AutoJs {
         if (AccessibilityService.Companion.getInstance() != null) {
             return;
         }
-        
-        String errorMessage = null;
-        if (AccessibilityServiceTool.isAccessibilityServiceEnabled(GlobalAppContext.get())) {
-            errorMessage = "Accessibility service is enabled but not running. Please restart the service.";
-        } else {
-            errorMessage = "Accessibility service is required for automation tools. Please enable it in the opened settings.";
-        }
-        
-        if (errorMessage != null) {
-            AccessibilityServiceTool.goToAccessibilitySetting();
-            // Chờ accessibility service được enable
-            if (!AccessibilityService.Companion.waitForEnabled(-1)) {
-                throw new ScriptInterruptedException();
-            }
+        // Chờ accessibility service được enable
+        if (!AccessibilityService.Companion.waitForEnabled(-1)) {
+            throw new ScriptInterruptedException();
         }
     }
 }
