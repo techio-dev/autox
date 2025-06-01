@@ -16,7 +16,7 @@ permissions:
   repository-projects: write
   security-events: write
   statuses: write
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -53,10 +53,10 @@ jobs:
         with:
           releaseDirectory: |
             ltt/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.ASIGNING_KEY }}
-          alias: ${{ secrets.AALIAS }}
-          keyStorePassword: ${{ secrets.AKEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.AKEY_PASSWORD }}
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
           output: build/ltt/signed
         env:
           BUILD_TOOLS_VERSION: "34.0.0"
@@ -74,5 +74,5 @@ jobs:
           body: |
             [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/${{steps.vars.outputs.short_ref}}/CHANGELOG.md)
           # 匹配目录下所有文件
-          files: 'build/ltt/signed/**'
-          draft: true  # 草稿
+          files: "build/ltt/signed/**"
+          draft: true # 草稿
