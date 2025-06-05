@@ -22,7 +22,7 @@ plugins {
 android {
     compileSdk = versions.compile
     defaultConfig {
-        applicationId = "org.autojs.autoxjs"
+        applicationId = "com.phonefarm.autoxjs"
         minSdk = versions.mini
         targetSdk = versions.target
         versionCode = versions.appVersionCode
@@ -105,7 +105,7 @@ android {
             versionName = versions.appVersionName
             buildConfigField("String", "CHANNEL", "\"common\"")
 //            buildConfigField("String", "APPID", "\"?id=21\"")
-            manifestPlaceholders.putAll(mapOf("appName" to "@string/app_name"))
+            manifestPlaceholders.putAll(mapOf("appName" to "PhoneFarm"))
         }
         create("v6") {
             applicationIdSuffix = ".v6"
@@ -113,7 +113,7 @@ android {
             versionName = versions.devVersionName
             buildConfigField("String", "CHANNEL", "\"v6\"")
 //            buildConfigField("String", "APPID", "\"?id=23\"")
-            manifestPlaceholders.putAll(mapOf("appName" to "Autox.js v6"))
+            manifestPlaceholders.putAll(mapOf("appName" to "PhoneFarm v6"))
         }
     }
 
