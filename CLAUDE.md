@@ -3,16 +3,22 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Mục đích dự án
-AutoX là ứng dụng Android cho phép thực thi JavaScript scripts trên thiết bị Android. Đây là fork cải tiến từ Auto.js với tính năng automation, accessibility services, OCR (PaddleOCR/ML Kit), và OpenCV.
+PhoneFarm là ứng dụng Android độc lập được fork từ AutoX, chuyên hóa cho automation và device management. Ứng dụng cho phép thực thi JavaScript scripts với tính năng đặc biệt về WiFi automation, accessibility services, OCR (PaddleOCR/ML Kit), và OpenCV.
+
+**Khác biệt với AutoX gốc:**
+- Package name: `com.phonefarm.autoxjs` (thay vì `org.autojs.autoxjs`)
+- Tập trung vào phone farm automation và WiFi management 
+- Có WiFiConnectActivity riêng cho Android 8-9 devices
+- Phát triển độc lập, không merge về AutoX master branch
 
 ## Lệnh Build và Development
 
 ### Build APK
 ```bash
-./gradlew assembleDebug            # Build debug APK
-./gradlew assembleRelease          # Build release APK  
-./gradlew assembleCommon           # Build common flavor (org.autojs.autoxjs)
-./gradlew assembleV6               # Build v6 flavor (org.autojs.autoxjs.v6)
+./gradlew :phonefarm:assembleDebug            # Build debug APK
+./gradlew :phonefarm:assembleRelease          # Build release APK  
+./gradlew :phonefarm:assembleCommon           # Build common flavor (com.phonefarm.autoxjs)
+./gradlew :phonefarm:assembleV6               # Build v6 flavor (com.phonefarm.autoxjs.v6)
 ```
 
 ### Build Template APK
@@ -39,7 +45,7 @@ AutoX là ứng dụng Android cho phép thực thi JavaScript scripts trên thi
 
 Dự án gồm 7 module chính:
 
-- **`:app`** - Module ứng dụng chính, chứa UI và activities
+- **`:phonefarm`** - Module ứng dụng chính PhoneFarm, chứa UI và activities (thay thế :app)
 - **`:autojs`** - Core JavaScript runtime engine (Rhino), xử lý thực thi scripts
 - **`:automator`** - Xử lý automation và accessibility services  
 - **`:common`** - Shared utilities và base classes
@@ -50,13 +56,18 @@ Dự án gồm 7 module chính:
 ## Thông tin quan trọng
 
 ### JavaScript Engine
-- Sử dụng Rhino 1.7.14 (file: `app/libs/rhino-1.7.14-jdk7.jar`)
+- Sử dụng Rhino 1.7.14 (file: `phonefarm/libs/rhino-1.7.14-jdk7.jar`)
 - JavaScript modules trong `autojs/src/main/assets/modules/`
 - Init script: `autojs/src/main/assets/init.js`
 
-### Product Flavors
-- **common**: Phiên bản chính thức (package: org.autojs.autoxjs)
-- **v6**: Phiên bản phát triển (package: org.autojs.autoxjs.v6)
+### Product Flavors  
+- **common**: Phiên bản chính thức (package: com.phonefarm.autoxjs)
+- **v6**: Phiên bản phát triển (package: com.phonefarm.autoxjs.v6)
+
+### Tính năng đặc biệt của PhoneFarm
+- **WiFiConnectActivity**: Kết nối WiFi via ADB cho Android 8-9
+- **Phone Farm Automation**: Tối ưu cho quản lý nhiều thiết bị
+- **Enhanced Device Management**: Cải tiến cho automation scenarios
 
 ### Native Libraries
 - OpenCV: `LocalRepo/OpenCV/opencv-4.5.5.aar`
@@ -77,4 +88,9 @@ Dự án gồm 7 module chính:
 - Android Studio: 2023.3.1 Patch 2
 
 ### Branch hiện tại
-Đang ở branch `app` (không phải `master`)
+Đang ở branch `feature/phonefarm` - phát triển ứng dụng PhoneFarm độc lập
+
+### Workflow PhoneFarm
+- **Không merge về master**: PhoneFarm là ứng dụng riêng biệt
+- **Independent development**: Phát triển tách biệt khỏi AutoX gốc
+- **Phone farm focused**: Chuyên biệt cho use cases automation thiết bị
