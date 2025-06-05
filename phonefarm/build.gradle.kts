@@ -30,6 +30,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 //        multiDexEnabled = true
         buildConfigField("boolean", "isMarket", "false")
+        buildConfigField("String", "CHANNEL", "\"release\"")
+        manifestPlaceholders.putAll(mapOf("appName" to "PhoneFarm"))
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["resourcePackageName"] = applicationId.toString()
@@ -98,24 +100,6 @@ android {
         }
     }
 
-    flavorDimensions.add("channel")
-    productFlavors {
-        create("common") {
-            versionCode = versions.appVersionCode
-            versionName = versions.appVersionName
-            buildConfigField("String", "CHANNEL", "\"common\"")
-//            buildConfigField("String", "APPID", "\"?id=21\"")
-            manifestPlaceholders.putAll(mapOf("appName" to "PhoneFarm"))
-        }
-        create("v6") {
-            applicationIdSuffix = ".v6"
-            versionCode = versions.devVersionCode
-            versionName = versions.devVersionName
-            buildConfigField("String", "CHANNEL", "\"v6\"")
-//            buildConfigField("String", "APPID", "\"?id=23\"")
-            manifestPlaceholders.putAll(mapOf("appName" to "PhoneFarm v6"))
-        }
-    }
 
     sourceSets {
         getByName("main") {
