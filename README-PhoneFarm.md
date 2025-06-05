@@ -106,10 +106,19 @@ Kế thừa license từ AutoX project.
 PhoneFarm là independent fork phát triển riêng, không merge về AutoX master branch.
 
 ### Development Workflow
-1. Phát triển trên `feature/phonefarm` branch
-2. Focus vào phone farm automation use cases  
-3. Maintain compatibility với Android 8-9 devices
-4. Independent versioning và release cycle
+1. **Main branch**: `phonefarm` (không phải `master`)
+2. **Feature development**: Tạo branches từ `phonefarm`, merge về `phonefarm`
+3. Focus vào phone farm automation use cases  
+4. Maintain compatibility với Android 8-9 devices
+5. Independent versioning và release cycle
+
+### Branch Strategy
+```
+phonefarm (main)
+├── feature/wifi-enhancements
+├── feature/device-management  
+└── feature/automation-scripts
+```
 
 ## 🎯 Use Cases
 

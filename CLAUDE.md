@@ -87,10 +87,11 @@ Dự án gồm 7 module chính:
 - JDK: 17
 - Android Studio: 2023.3.1 Patch 2
 
-### Branch hiện tại
-Đang ở branch `feature/phonefarm` - phát triển ứng dụng PhoneFarm độc lập
+### Branch chính
+Đang ở branch `phonefarm` - branch chính cho PhoneFarm development
 
 ### Workflow PhoneFarm
-- **Không merge về master**: PhoneFarm là ứng dụng riêng biệt
-- **Independent development**: Phát triển tách biệt khỏi AutoX gốc
+- **Branch chính**: `phonefarm` (không phải `master`)
+- **Independent development**: Phát triển tách biệt khỏi AutoX gốc  
 - **Phone farm focused**: Chuyên biệt cho use cases automation thiết bị
+- **Feature branches**: Tạo từ `phonefarm`, merge về `phonefarm`
